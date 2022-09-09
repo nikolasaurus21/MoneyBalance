@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MoneyBalance.Models;
 using System.Linq;
 
 namespace MoneyBalance.Models
 {
-    [Route("api/[action]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -16,12 +17,12 @@ namespace MoneyBalance.Models
             _context = context;
         }
 
-       // [HttpGet]
+       [HttpGet]
 
-        //public async Task<ActionResult<List<UserDTO>>> GetAll() 
-       // { 
-          //  var allusers = await _context.Users.Where(u => u.Id > 1)
-       // }
+        public async Task<ActionResult<List<UserDTO>>> GetAll() 
+        {
+            return Ok(await _context.Users.ToListAsync());
+        }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers (int id)

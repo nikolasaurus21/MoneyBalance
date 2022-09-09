@@ -7,7 +7,7 @@ namespace MoneyBalance.Models
         {
         }
 
-        public DbSet<MoneyBalance> MoneyBalances { get; set; } = null!;
+        public DbSet<Money_Balance> MoneyBalances { get; set; } = null!;
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<MBHistory> MBHistorys { get; set; } = null!;
     }
